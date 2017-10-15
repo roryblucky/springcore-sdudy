@@ -1,6 +1,7 @@
 package com.rory.springcore.study.xml;
 
 import com.rory.springcore.study.AbstractBeanDefinitionReader;
+import com.rory.springcore.study.BeanReference;
 import com.rory.springcore.study.PropertyValue;
 import com.rory.springcore.study.factory.BeanDefinition;
 import com.rory.springcore.study.io.ResourceLoader;
@@ -67,7 +68,18 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element propertyEle = (Element) node;
                 String name = propertyEle.getAttribute("name");
                 String value = propertyEle.getAttribute("value");
-                beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                //判断是否为beanReference
+                if (value != null && !value.isEmpty()) {
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                } else {
+                    String ref = propertyEle.getAttribute("ref");
+                    if (ref == null || ref.length() == 0) {
+                        throw new IllegalArgumentException("Configuration problem: <property> element for property '"
+                                + name + "' must specify a ref or value");
+                    }
+                    BeanReference beanReference = new BeanReference(ref);
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, beanReference));
+                }
             }
         }
     }
