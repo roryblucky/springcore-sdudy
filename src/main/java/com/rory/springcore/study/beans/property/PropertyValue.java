@@ -1,4 +1,4 @@
-package com.rory.springcore.study;
+package com.rory.springcore.study.beans.property;
 
 public class PropertyValue {
     private final String name;

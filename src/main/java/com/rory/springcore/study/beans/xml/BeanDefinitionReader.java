@@ -1,4 +1,4 @@
-package com.rory.springcore.study;
+package com.rory.springcore.study.beans.xml;
 
 /**
  * 从配置中读取bean的定义

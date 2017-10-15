@@ -1,6 +1,6 @@
-package com.rory.springcore.study.factory;
+package com.rory.springcore.study.beans.factory;
 
-import com.rory.springcore.study.PropertyValues;
+import com.rory.springcore.study.beans.property.PropertyValues;
 
 public class BeanDefinition {
     private Object bean;

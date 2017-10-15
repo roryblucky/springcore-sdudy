@@ -1,8 +1,8 @@
-package com.rory.springcore.study.factory;
+package com.rory.springcore.study.beans.factory;
 
-import com.rory.springcore.study.BeanReference;
-import com.rory.springcore.study.PropertyValue;
-import com.rory.springcore.study.PropertyValues;
+import com.rory.springcore.study.beans.BeanReference;
+import com.rory.springcore.study.beans.property.PropertyValue;
+import com.rory.springcore.study.beans.property.PropertyValues;
 
 import java.lang.reflect.Field;
 
@@ -14,7 +14,6 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     public Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         //利用反射机制创建bean
         Object bean = this.createBeanInstance(beanDefinition);
-        beanDefinition.setBean(bean);
         //再进行字段的自动装配
         this.applyPropertyValues(bean, beanDefinition.getPropertyValues());
         return bean;

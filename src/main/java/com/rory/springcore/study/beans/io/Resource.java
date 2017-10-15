@@ -1,4 +1,4 @@
-package com.rory.springcore.study.io;
+package com.rory.springcore.study.beans.io;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.rory.springcore.study;
+package com.rory.springcore.study.beans.property;
 
 import java.util.ArrayList;
 import java.util.List;

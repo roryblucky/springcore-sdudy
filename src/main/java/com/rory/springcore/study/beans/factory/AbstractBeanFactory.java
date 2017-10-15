@@ -1,4 +1,4 @@
-package com.rory.springcore.study.factory;
+package com.rory.springcore.study.beans.factory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         Object bean = beanDefinition.getBean();
         if (bean == null) {
             bean = this.doCreateBean(beanDefinition);
+            beanDefinition.setBean(bean);
         }
         return bean;
     }
 
-    @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
         //此处未进行bean的创建，而是暂时存储beanDefinition， 当getBean的时候再创建（Spring lazy-init）。
         beanDefinitionMap.put(name, beanDefinition);

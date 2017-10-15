@@ -1,4 +1,4 @@
-package com.rory.springcore.study;
+package com.rory.springcore.study.beans;
 
 public class BeanReference {
     private String refBeanClassName;

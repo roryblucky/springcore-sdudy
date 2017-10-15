@@ -1,10 +1,9 @@
-package com.rory.springcore.study.xml;
+package com.rory.springcore.study.beans.xml;
 
-import com.rory.springcore.study.AbstractBeanDefinitionReader;
-import com.rory.springcore.study.BeanReference;
-import com.rory.springcore.study.PropertyValue;
-import com.rory.springcore.study.factory.BeanDefinition;
-import com.rory.springcore.study.io.ResourceLoader;
+import com.rory.springcore.study.beans.BeanReference;
+import com.rory.springcore.study.beans.factory.BeanDefinition;
+import com.rory.springcore.study.beans.io.ResourceLoader;
+import com.rory.springcore.study.beans.property.PropertyValue;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -22,7 +21,7 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
     @Override
     public void loadBeanDefinitions(String location) throws Exception {
-        InputStream inputStream = getResourceLoader().gerResource(location).getInputStream();
+        InputStream inputStream = getResourceLoader().getResource(location).getInputStream();
         this.doLoadBeanDefinitions(inputStream);
     }
 
@@ -55,7 +54,7 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
         String name = ele.getAttribute("name");
         String className = ele.getAttribute("class");
         BeanDefinition beanDefinition = new BeanDefinition();
-        processProperty(ele, beanDefinition);
+        this.processProperty(ele, beanDefinition);
         beanDefinition.setBeanClassName(className);
         getRegistry().put(name, beanDefinition);
     }
