@@ -25,7 +25,9 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
             field.setAccessible(true);
             Object value = propertyValue.getValue();
             if (value instanceof BeanReference) {
-                value = getBean(((BeanReference) value).getRefBeanClassName());
+                Object referenceBean = getBean(((BeanReference) value).getRefBeanClassName());
+                ((BeanReference) value).setReferenceBean(referenceBean);
+                value = referenceBean;
             }
             field.set(bean, value);
         }
