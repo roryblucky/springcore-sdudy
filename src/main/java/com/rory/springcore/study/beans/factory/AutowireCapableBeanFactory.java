@@ -14,6 +14,8 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     public Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         //利用反射机制创建bean
         Object bean = this.createBeanInstance(beanDefinition);
+        //懒加载，在此处设置实例化的bean
+        beanDefinition.setBean(bean);
         //再进行字段的自动装配
         this.applyPropertyValues(bean, beanDefinition.getPropertyValues());
         return bean;

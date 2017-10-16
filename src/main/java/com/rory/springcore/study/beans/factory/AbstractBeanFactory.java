@@ -25,7 +25,8 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         Object bean = beanDefinition.getBean();
         if (bean == null) {
             bean = this.doCreateBean(beanDefinition);
-            beanDefinition.setBean(bean);
+            //提前初始化所有的bean，在这里设置bean实，例先注释掉，由于测试case为循坏依赖，循环依赖需要进行懒加载
+//            beanDefinition.setBean(bean);
         }
         return bean;
     }
