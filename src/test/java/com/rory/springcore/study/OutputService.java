@@ -1,12 +1,10 @@
 package com.rory.springcore.study;
 
-import org.junit.Assert;
-
 public class OutputService {
     private HelloService helloService;
 
     public void output(String text){
-        Assert.assertNotNull(helloService);
+//        Assert.assertNotNull(helloService);
         System.out.println(text);
     }
 

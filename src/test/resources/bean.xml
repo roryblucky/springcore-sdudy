@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <bean name="outputService" class="com.rory.springcore.study.OutputService">
-        <property name="helloService" ref="helloService"/>
+        <!--<property name="helloService" ref="helloService"/>-->
     </bean>
-    <bean name="helloService" class="com.rory.springcore.study.HelloService">
+    <bean name="helloService" class="com.rory.springcore.study.HelloServiceImpl">
         <property name="text" value="Hello World!"></property>
         <property name="outputService" ref="outputService"></property>
     </bean>
