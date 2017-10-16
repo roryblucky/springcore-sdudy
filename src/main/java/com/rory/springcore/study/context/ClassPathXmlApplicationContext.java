@@ -25,7 +25,9 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
     @Override
     protected void refresh() throws Exception {
+        //加载bean配置并注册到容器中
         loadBeanDefinitions(getBeanFactory());
+        //进行bean初始化
         onRefresh();
     }
 
