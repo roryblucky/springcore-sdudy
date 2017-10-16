@@ -19,5 +19,12 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         return beanFactory;
     }
 
+    protected void onRefresh() throws Exception {
+        beanFactory.preInstantiateSingletons();
+    }
+
     protected abstract void refresh() throws Exception;
+
+    protected abstract void loadBeanDefinitions(AbstractBeanFactory beanFactory) throws Exception;
+
 }
